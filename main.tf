@@ -1,5 +1,5 @@
 variable "region" {
-  default = "eu-north-1"
+  default = "eu-north-1" #enter your aws region
 }
 
 variable "cluster_name" {
