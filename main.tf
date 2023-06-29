@@ -74,7 +74,7 @@ resource "aws_security_group_rule" "worker_group_mgmt_one" {
   from_port   = 0
   to_port     = 65535
   protocol    = "tcp"
-  cidr_blocks = ["10.0.0.0/8", "95.136.121.65/32"]
+  cidr_blocks = ["10.0.0.0/8"]
 }
 
 resource "kubernetes_secret" "terraform_token" {
@@ -237,7 +237,7 @@ resource "helm_release" "prometheus" {
 
 set {
   name  = "server.ingress.hosts[0].name"
-  value = "prometheus.fogbyte.services"
+  value = "prometheus.example.com"
 }
 
 set {
@@ -262,7 +262,7 @@ resource "helm_release" "grafana" {
     ingress:
       enabled: true
       hosts:
-        - grafana.fogbyte.services
+        - grafana.example.com
       paths:
         - /
     EOT
@@ -342,7 +342,7 @@ resource "helm_release" "alertmanager" {
 
 set {
   name  = "server.ingress.hosts[0].name"
-  value = "alertmanager.fogbyte.services"
+  value = "alertmanager.example.com"
 }
 
 set {
